@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Andreas Fieger (@fiedschMuc)">
+  <title>Erweiterungen Eine geführte Wanderung duch die Strukturen von Contao</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #2a211c; color: #bdae9d; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #2a211c; color: #bdae9d; border-right: 1px solid #bdae9d; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #bdae9d; background-color: #2a211c; }
+code > span.kw { color: #43a8ed; font-weight: bold; } /* Keyword */
+code > span.dt { text-decoration: underline; } /* DataType */
+code > span.dv { color: #44aa43; } /* DecVal */
+code > span.bn { color: #44aa43; } /* BaseN */
+code > span.fl { color: #44aa43; } /* Float */
+code > span.ch { color: #049b0a; } /* Char */
+code > span.st { color: #049b0a; } /* String */
+code > span.co { color: #0066ff; font-style: italic; } /* Comment */
+code > span.al { color: #ffff00; } /* Alert */
+code > span.fu { color: #ff9358; font-weight: bold; } /* Function */
+code > span.er { color: #ffff00; font-weight: bold; } /* Error */
+code > span.wa { color: #ffff00; font-weight: bold; } /* Warning */
+code > span.cn { } /* Constant */
+code > span.sc { color: #049b0a; } /* SpecialChar */
+code > span.vs { color: #049b0a; } /* VerbatimString */
+code > span.ss { color: #049b0a; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { } /* Variable */
+code > span.cf { color: #43a8ed; font-weight: bold; } /* ControlFlow */
+code > span.op { } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { font-weight: bold; } /* Preprocessor */
+code > span.at { } /* Attribute */
+code > span.do { color: #0066ff; font-style: italic; } /* Documentation */
+code > span.an { color: #0066ff; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.co { color: #0066ff; font-weight: bold; font-style: italic; } /* Comment */
+code > span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+  <h1 class="title">Erweiterungen<br>Eine geführte Wanderung duch die Strukturen von Contao</h1>
+  <h2 class="author">Andreas Fieger (<span class="citation" data-cites="fiedschMuc">@fiedschMuc</span>)</h2>
+  <h3 class="date">2016-04-xx</h3>
+</section>
+
+<section id="contao-erweiterung" class="slide level1">
+<h1>Contao Erweiterung</h1>
+<!-- Modifiziertes Styling (für alle Seiten) -->
+<!-- Code auf der ersten Folie, sonst wird eine leere Folie erzeugt -->
+<style>.reveal h1 { font-size: 2em; }.reveal h1 , .reveal h2 , .reveal h3 { text-transform: none; }.reveal pre { width: 100%; }.reveal pre code { font-size: .75em; }code { background-color: inherit; /*#ccc;*/ }</style>
+<ul>
+<li>Backend
+<ul>
+<li>(Daten-)Tabellen</li>
+<li>Übersichten</li>
+</ul></li>
+<li>Frontend
+<ul>
+<li>ContentElemente</li>
+<li>Module</li>
+<li>Formularfelder (Widgets)</li>
+<li>Inserttags</li>
+</ul></li>
+<li>Allgemein
+<ul>
+<li>(Daten-)Modelle</li>
+</ul></li>
+</ul>
+</section>
+<section id="genereller-aufbau" class="slide level1">
+<h1>Genereller Aufbau</h1>
+<ul>
+<li><p>eigenes Verzeichnis in <code>system/modules/</code></p></li>
+<li>mit Unterverzeichnissen</li>
+<li><code>config</code></li>
+<li><code>dca</code></li>
+<li><code>languages/{en,de}</code></li>
+<li><code>assets</code></li>
+<li><code>classes</code></li>
+<li><code>elements</code></li>
+<li><code>models</code></li>
+<li><code>modules</code></li>
+<li><code>templates</code></li>
+<li><p><code>widgets</code></p></li>
+</ul>
+</section>
+<section id="am-einfachsten" class="slide level1">
+<h1>Am “einfachsten”</h1>
+<figure>
+<img src="./img/rtsl.jpg" alt="read the source, Luke" /><figcaption>read the source, Luke</figcaption>
+</figure>
+</section>
+<section id="wie" class="slide level1">
+<h1>Wie?</h1>
+<p>etwas suchen, das</p>
+<ul>
+<li><p>dem Gewünschten nahe kommt</p></li>
+<li><p>möglichst simpel erscheint (was soll passieren)</p></li>
+<li><p>möglichst simpel ist (wie viel Code wurde benötigt)</p></li>
+<li><p>Tools verwenden (z.B. <code>grep</code>)</p></li>
+</ul>
+</section>
+<section id="abschauen-lernen" class="slide level1">
+<h1>Abschauen = lernen</h1>
+<p>do not simply copy/paste!</p>
+<figure>
+<img src="./img/ecpfso.jpg" />
+</figure>
+<p>Zu viel einfügen erzeugt unnötig komplizierten Code der schlimmstenfalls <em>trotzdem funktioniert</em> (für mich: CSS).</p>
+</section>
+<section id="welche-bereiche-gibt-es" class="slide level1">
+<h1>Welche Bereiche gibt es?</h1>
+</section>
+<section id="backend" class="slide level1">
+<h1>Backend</h1>
+<ul>
+<li><p>Datenerfassung =&gt; eigene Tabelle</p></li>
+<li><p>Übersichtsseite wie z.B. die “Startseite”</p></li>
+</ul>
+</section>
+<section id="frontend" class="slide level1">
+<h1>Frontend</h1>
+<ul>
+<li>ContentElement</li>
+<li>Modul</li>
+<li>Formularfeld</li>
+<li>Inserttag</li>
+</ul>
+</section>
+<section id="contao-komponenten" class="slide level1">
+<h1>Contao Komponenten</h1>
+<ul>
+<li>DCA</li>
+<li>Konfiguration</li>
+<li>ContentElemente</li>
+<li>Module</li>
+<li>uvm.</li>
+</ul>
+</section>
+<section id="dca" class="slide level1">
+<h1>DCA</h1>
+<ul>
+<li>Data Container Array</li>
+<li>Array mit allen Informationen, die Contao sagen, wie eine Datentabelle darzustellen und zu verwalten ist.</li>
+<li>wird ggf. aus Einzelteilen zusammengebaut (core + Extension; gleicher Dateiname!)</li>
+<li>DCA + Konfiguration = Backendtabelle.</li>
+<li>Backendtabelle stellt Daten für Frontendmodul bereit</li>
+</ul>
+</section>
+<section id="dca-minimal-beispiel" class="slide level1">
+<h1>DCA (Minimal-)Beispiel</h1>
+<div class="sourceCode"><pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
+<span class="co">// system/modules/core/dca/tl_cron.php</span>
+<span class="kw">$GLOBALS</span><span class="ot">[</span><span class="st">&#39;TL_DCA&#39;</span><span class="ot">][</span><span class="st">&#39;tl_cron&#39;</span><span class="ot">]</span> = <span class="fu">array</span>
+<span class="ot">(</span>
+
+    <span class="co">// Config</span>
+    <span class="st">&#39;config&#39;</span> =&gt; <span class="fu">array</span>
+    <span class="ot">(</span>
+        <span class="st">&#39;sql&#39;</span> =&gt; <span class="fu">array</span>
+        <span class="ot">(</span>
+            <span class="st">&#39;keys&#39;</span> =&gt; <span class="fu">array</span>
+            <span class="ot">(</span>
+                <span class="st">&#39;id&#39;</span> =&gt; <span class="st">&#39;primary&#39;</span><span class="ot">,</span>
+                <span class="st">&#39;name&#39;</span> =&gt; <span class="st">&#39;unique&#39;</span>
+            <span class="ot">)</span>
+        <span class="ot">)</span>
+    <span class="ot">),</span>
+
+    <span class="co">// Fields</span>
+    <span class="st">&#39;fields&#39;</span> =&gt; <span class="fu">array</span>
+    <span class="ot">(</span>
+        <span class="st">&#39;id&#39;</span> =&gt; <span class="fu">array</span>
+        <span class="ot">(</span>
+            <span class="st">&#39;sql&#39;</span>                     =&gt; <span class="st">&quot;int(10) unsigned NOT NULL auto_increment&quot;</span>
+        <span class="ot">),</span>
+        <span class="st">&#39;name&#39;</span> =&gt; <span class="fu">array</span>
+        <span class="ot">(</span>
+            <span class="st">&#39;sql&#39;</span>                     =&gt; <span class="st">&quot;varchar(32) NULL&quot;</span>
+        <span class="ot">),</span>
+        <span class="st">&#39;value&#39;</span> =&gt; <span class="fu">array</span>
+        <span class="ot">(</span>
+            <span class="st">&#39;sql&#39;</span>                     =&gt; <span class="st">&quot;varchar(32) NOT NULL default &#39;&#39;&quot;</span>
+        <span class="ot">)</span>
+    <span class="ot">)</span>
+<span class="ot">);</span></code></pre></div>
+</section>
+<section id="abschnitte-im-dca" class="slide level1">
+<h1>Abschnitte im DCA</h1>
+<div class="sourceCode"><pre class="sourceCode php"><code class="sourceCode php"><span class="kw">$GLOBALS</span><span class="ot">[</span><span class="st">&#39;TL_DCA&#39;</span><span class="ot">][</span><span class="st">&#39;tl_tabellenname&#39;</span><span class="ot">][</span><span class="st">&#39;config&#39;</span><span class="ot">]</span> = <span class="fu">array</span><span class="ot">(</span><span class="co">/* ... */</span><span class="ot">);</span>
+
+<span class="kw">$GLOBALS</span><span class="ot">[</span><span class="st">&#39;TL_DCA&#39;</span><span class="ot">][</span><span class="st">&#39;tl_tabellenname&#39;</span><span class="ot">][</span><span class="st">&#39;list&#39;</span><span class="ot">]</span> = <span class="fu">array</span><span class="ot">(</span><span class="co">/* ... */</span><span class="ot">);</span>
+
+<span class="kw">$GLOBALS</span><span class="ot">[</span><span class="st">&#39;TL_DCA&#39;</span><span class="ot">][</span><span class="st">&#39;tl_tabellenname&#39;</span><span class="ot">][</span><span class="st">&#39;palettes&#39;</span><span class="ot">]</span> = <span class="fu">array</span><span class="ot">(</span><span class="co">/* ... */</span><span class="ot">);</span>
+
+<span class="kw">$GLOBALS</span><span class="ot">[</span><span class="st">&#39;TL_DCA&#39;</span><span class="ot">][</span><span class="st">&#39;tl_tabellenname&#39;</span><span class="ot">][</span><span class="st">&#39;subpalettes&#39;</span><span class="ot">]</span> = <span class="fu">array</span><span class="ot">(</span><span class="co">/* ... */</span><span class="ot">);</span>
+
+<span class="kw">$GLOBALS</span><span class="ot">[</span><span class="st">&#39;TL_DCA&#39;</span><span class="ot">][</span><span class="st">&#39;tl_tabellenname&#39;</span><span class="ot">][</span><span class="st">&#39;fields&#39;</span><span class="ot">]</span> = <span class="fu">array</span><span class="ot">(</span><span class="co">/* ... */</span><span class="ot">);</span>
+
+<span class="co">// ja, es gibt noch mehr ...</span></code></pre></div>
+</section>
+<section class="slide level1">
+
+<section id="config" class="level2">
+<h2><code>config</code></h2>
+<div class="sourceCode"><pre class="sourceCode php"><code class="sourceCode php"><span class="co">// system/modules/core/dca/tl_member.php ; $GLOBALS[&#39;TL_DCA&#39;][&#39;tl_member&#39;]</span>
+<span class="st">&#39;config&#39;</span> =&gt; <span class="fu">array</span>
+<span class="ot">(</span>
+  <span class="st">&#39;dataContainer&#39;</span>     =&gt; <span class="st">&#39;Table&#39;</span><span class="ot">,</span>
+  <span class="st">&#39;enableVersioning&#39;</span>  =&gt; <span class="kw">true</span><span class="ot">,</span>
+  <span class="st">&#39;onsubmit_callback&#39;</span> =&gt; <span class="fu">array</span>
+  <span class="ot">(</span>
+    <span class="fu">array</span><span class="ot">(</span><span class="st">&#39;tl_member&#39;</span><span class="ot">,</span> <span class="st">&#39;storeDateAdded&#39;</span><span class="ot">),</span>
+    <span class="fu">array</span><span class="ot">(</span><span class="st">&#39;tl_member&#39;</span><span class="ot">,</span> <span class="st">&#39;checkRemoveSession&#39;</span><span class="ot">)</span>
+  <span class="ot">),</span>
+  <span class="st">&#39;ondelete_callback&#39;</span> =&gt; <span class="fu">array</span>
+  <span class="ot">(</span>
+    <span class="fu">array</span><span class="ot">(</span><span class="st">&#39;tl_member&#39;</span><span class="ot">,</span> <span class="st">&#39;removeSession&#39;</span><span class="ot">)</span>
+  <span class="ot">),</span>
+  <span class="st">&#39;sql&#39;</span> =&gt; <span class="fu">array</span>
+  <span class="ot">(</span>
+    <span class="st">&#39;keys&#39;</span> =&gt; <span class="fu">array</span>
+    <span class="ot">(</span>
+      <span class="st">&#39;id&#39;</span>         =&gt; <span class="st">&#39;primary&#39;</span><span class="ot">,</span>
+      <span class="st">&#39;username&#39;</span>   =&gt; <span class="st">&#39;unique&#39;</span><span class="ot">,</span>
+      <span class="st">&#39;email&#39;</span>      =&gt; <span class="st">&#39;index&#39;</span><span class="ot">,</span>
+      <span class="st">&#39;autologin&#39;</span>  =&gt; <span class="st">&#39;unique&#39;</span><span class="ot">,</span>
+      <span class="st">&#39;activation&#39;</span> =&gt; <span class="st">&#39;index&#39;</span>
+    <span class="ot">)</span>
+  <span class="ot">)</span>
+<span class="ot">),</span></code></pre></div>
+</section>
+</section>
+<section class="slide level1">
+
+<section id="palettes-und-subpalettes" class="level2">
+<h2><code>palettes</code> und <code>subpalettes</code></h2>
+<div class="sourceCode"><pre class="sourceCode php"><code class="sourceCode php"><span class="co">// system/modules/core/dca/tl_member.php ; $GLOBALS[&#39;TL_DCA&#39;][&#39;tl_member&#39;]</span>
+<span class="co">// Palettes</span>
+<span class="st">&#39;palettes&#39;</span> =&gt; <span class="fu">array</span>
+<span class="ot">(</span>
+  <span class="st">&#39;__selector__&#39;</span>  =&gt; <span class="fu">array</span><span class="ot">(</span><span class="st">&#39;login&#39;</span><span class="ot">,</span> <span class="st">&#39;assignDir&#39;</span><span class="ot">),</span>
+  <span class="st">&#39;default&#39;</span>       =&gt; <span class="st">&#39;{personal_legend},firstname,lastname,dateOfBirth,gender; ... ;{login_legend},login;{homedir_legend:hide},assignDir;{account_legend},disable,start,stop&#39;</span><span class="ot">,</span>
+<span class="ot">),</span>
+
+<span class="co">// Subpalettes</span>
+<span class="st">&#39;subpalettes&#39;</span> =&gt; <span class="fu">array</span>
+<span class="ot">(</span>
+  <span class="st">&#39;login&#39;</span>         =&gt; <span class="st">&#39;username,password&#39;</span><span class="ot">,</span>
+  <span class="st">&#39;assignDir&#39;</span>     =&gt; <span class="st">&#39;homeDir&#39;</span>
+<span class="ot">),</span></code></pre></div>
+</section>
+</section>
+<section class="slide level1">
+
+<section id="fields" class="level2">
+<h2><code>fields</code></h2>
+<div class="sourceCode"><pre class="sourceCode php"><code class="sourceCode php"><span class="co">// system/modules/core/dca/tl_member.php ; $GLOBALS[&#39;TL_DCA&#39;][&#39;tl_member&#39;]</span>
+<span class="st">&#39;email&#39;</span> =&gt; <span class="fu">array</span>
+<span class="ot">(</span>
+  <span class="st">&#39;label&#39;</span>        =&gt; &amp;<span class="kw">$GLOBALS</span><span class="ot">[</span><span class="st">&#39;TL_LANG&#39;</span><span class="ot">][</span><span class="st">&#39;tl_member&#39;</span><span class="ot">][</span><span class="st">&#39;email&#39;</span><span class="ot">],</span>
+  <span class="st">&#39;exclude&#39;</span>      =&gt; <span class="kw">true</span><span class="ot">,</span>
+  <span class="st">&#39;search&#39;</span>       =&gt; <span class="kw">true</span><span class="ot">,</span>
+  <span class="st">&#39;inputType&#39;</span>    =&gt; <span class="st">&#39;text&#39;</span><span class="ot">,</span>
+  <span class="st">&#39;eval&#39;</span>         =&gt; <span class="fu">array</span><span class="ot">(</span><span class="st">&#39;mandatory&#39;</span>=&gt;<span class="kw">true</span><span class="ot">,</span> <span class="st">&#39;maxlength&#39;</span>=&gt;<span class="dv">255</span><span class="ot">,</span> <span class="st">&#39;rgxp&#39;</span>=&gt;<span class="st">&#39;email&#39;</span><span class="ot">,</span>
+                          <span class="st">&#39;unique&#39;</span>=&gt;<span class="kw">true</span><span class="ot">,</span> <span class="st">&#39;decodeEntities&#39;</span>=&gt;<span class="kw">true</span><span class="ot">,</span> <span class="st">&#39;feEditable&#39;</span>=&gt;<span class="kw">true</span><span class="ot">,</span>
+                          <span class="st">&#39;feViewable&#39;</span>=&gt;<span class="kw">true</span><span class="ot">,</span> <span class="st">&#39;feGroup&#39;</span>=&gt;<span class="st">&#39;contact&#39;</span><span class="ot">,</span> <span class="st">&#39;tl_class&#39;</span>=&gt;<span class="st">&#39;w50&#39;</span><span class="ot">),</span>
+  <span class="st">&#39;sql&#39;</span>          =&gt; <span class="st">&quot;varchar(255) NOT NULL default &#39;&#39;&quot;</span>
+<span class="ot">),</span></code></pre></div>
+</section>
+</section>
+<section id="konfiguration" class="slide level1">
+<h1>Konfiguration</h1>
+</section>
+<section class="slide level1">
+
+<section id="backendmodule" class="level2">
+<h2>Backendmodule</h2>
+<div class="sourceCode"><pre class="sourceCode php"><code class="sourceCode php"><span class="co">// system/modules/myextension/config/config.php</span>
+<span class="kw">$GLOBALS</span><span class="ot">[</span><span class="st">&#39;BE_MOD&#39;</span><span class="ot">]</span> = <span class="fu">array</span><span class="ot">(</span><span class="co">/* ... */</span><span class="ot">);</span>
+
+<span class="co">// Bsp.:</span>
+<span class="kw">$GLOBALS</span><span class="ot">[</span><span class="st">&#39;BE_MOD&#39;</span><span class="ot">][</span><span class="st">&#39;system&#39;</span><span class="ot">][</span><span class="st">&#39;files&#39;</span><span class="ot">]</span> = <span class="fu">array</span>
+  <span class="ot">(</span>
+    <span class="st">&#39;tables&#39;</span>      =&gt; <span class="fu">array</span><span class="ot">(</span><span class="st">&#39;tl_files&#39;</span><span class="ot">)</span>
+  <span class="ot">);</span>
+<span class="co">// plus Eintrag in languages/*/modules.php (oder *.xlf)</span>
+<span class="co">// $GLOBALS[&#39;TL_LANG&#39;][&#39;MOD&#39;][&#39;tl_files&#39;][0] = &#39;Dateiverwaltung&#39;;</span>
+<span class="co">// $GLOBALS[&#39;TL_LANG&#39;][&#39;MOD&#39;][&#39;tl_files&#39;][1] = &#39;Dateien und Ordner verwalten ...&#39;;</span></code></pre></div>
+</section>
+</section>
+<section class="slide level1">
+
+<section id="contentelemente" class="level2">
+<h2>ContentElemente</h2>
+<div class="sourceCode"><pre class="sourceCode php"><code class="sourceCode php"><span class="co">// system/modules/myextension/config/config.php</span>
+<span class="kw">$GLOBALS</span><span class="ot">[</span><span class="st">&#39;TL_CTE&#39;</span><span class="ot">]</span> = <span class="fu">array</span><span class="ot">(</span><span class="co">/* ... */</span><span class="ot">);</span>
+<span class="co">// Bsp.:</span>
+
+<span class="kw">$GLOBALS</span><span class="ot">[</span><span class="st">&#39;TL_CTE&#39;</span><span class="ot">][</span><span class="st">&#39;texts&#39;</span><span class="ot">][</span><span class="st">&#39;text&#39;</span><span class="ot">]</span> = <span class="st">&#39;ContentText&#39;</span><span class="ot">;</span>
+<span class="co">// wieder plus Eintrag in languages/*/tl_content.php (oder *.xlf)</span></code></pre></div>
+</section>
+</section>
+<section class="slide level1">
+
+<section id="frontendmodule" class="level2">
+<h2>FrontendModule</h2>
+<div class="sourceCode"><pre class="sourceCode php"><code class="sourceCode php"><span class="co">// system/modules/myextension/config/config.php</span>
+<span class="kw">$GLOBALS</span><span class="ot">[</span><span class="st">&#39;FE_MOD&#39;</span><span class="ot">]</span> = <span class="fu">array</span><span class="ot">(</span><span class="co">/* ... */</span><span class="ot">);</span>
+
+<span class="co">// Strukturell wie $GLOBALS[&#39;TL_CTE&#39;]</span></code></pre></div>
+</section>
+</section>
+<section class="slide level1">
+
+<section id="und-vieles-mehr" class="level2">
+<h2>und vieles mehr</h2>
+<ul>
+<li>Formularfelder (<code>$GLOBALS['BE_FFL']</code> und <code>$GLOBALS['TL_FFL']</code>)</li>
+<li>Seitentypen (<code>$GLOBALS['TL_PTY']</code>)</li>
+<li>Wartungsarbeiten (<code>$GLOBALS['TL_MAINTENANCE']</code>, <code>$GLOBALS['TL_PURGE']</code>, <code>$GLOBALS['TL_CRON']</code>, ...)</li>
+<li>Hooks (<code>$GLOBALS['TL_HOOKS']</code>; Onlinehandbuch!)</li>
+<li>Besondere Darstellung für Wrapper (<code>$GLOBALS['TL_WRAPPERS']</code>)</li>
+</ul>
+</section>
+</section>
+<section id="programmieren" class="slide level1">
+<h1>Programmieren</h1>
+<p>ContentElement oder Modul implementieren</p>
+<div class="sourceCode"><pre class="sourceCode php"><code class="sourceCode php"><span class="co">// system/modules/myextension/{elements,modules}/My{Element,Module}.php</span>
+
+<span class="kw">protected</span> <span class="kw">$strTemplate</span> = <span class="st">&#39;mein_template&#39;</span><span class="ot">;</span> <span class="co">// Namenskonvention, Basisname</span>
+
+<span class="kw">protected</span> <span class="kw">function</span> generate<span class="ot">()</span> { <span class="co">/* ... */</span> }
+
+<span class="kw">protected</span> <span class="kw">function</span> compile<span class="ot">()</span> { <span class="co">/* ... */</span> }</code></pre></div>
+</section>
+<section id="templates" class="slide level1">
+<h1>Templates</h1>
+<p>schreiben</p>
+<div class="sourceCode"><pre class="sourceCode php"><code class="sourceCode php"><span class="co">// system/modules/myextension/templates/*.html5</span></code></pre></div>
+</section>
+<section id="autoloader" class="slide level1">
+<h1>Autoloader</h1>
+<p>erzeugen (lassen)!</p>
+<div class="sourceCode"><pre class="sourceCode php"><code class="sourceCode php"><span class="co">// system/modules/myextension/config/autoload.{ini,php}</span></code></pre></div>
+</section>
+<section id="fragen" class="slide level1">
+<h1>Fragen</h1>
+<!-- hier nachhalten, was diskutiert wurde -->
+</section>
+<section id="links" class="slide level1">
+<h1>Links</h1>
+<ul>
+<li>https://docs.contao.org/en/ (Developer Documentation)</li>
+<li>http://contao.ninja/files/contao-konferenz/2014/Contao_Konferenz_2014_-_Erweiterungen_entwickeln_für_Contao_leicht_gemacht.pdf</li>
+<li>https://github.com/fiedsch/contao_table_from_csv</li>
+</ul>
+</section>
+<section id="danke" class="slide level1">
+<h1>Danke</h1>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
