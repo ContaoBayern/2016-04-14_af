@@ -1,6 +1,7 @@
 .DS_Store
-.idea/*
-*.html*
+*.html
 *.pdf
-reveal.js/*
-img/*
+.idea/
+reveal.js/
+img/
+files/
