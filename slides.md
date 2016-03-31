@@ -1,6 +1,6 @@
 % Erweiterungen<br>Eine geführte Wanderung duch die Strukturen von Contao
 % Andreas Fieger (@fiedschMuc)
-% 2016-04-xx
+% 2016-04-14
 
 
 # Contao Erweiterung
@@ -147,7 +147,9 @@ $GLOBALS['TL_DCA']['tl_cron'] = array
 # Abschnitte im DCA
 
 
+## Übersicht
 ~~~ {.php}
+// system/modules/*/dca/tl_*.php ; 
 $GLOBALS['TL_DCA']['tl_tabellenname']['config'] = array(/* ... */);
 
 $GLOBALS['TL_DCA']['tl_tabellenname']['list'] = array(/* ... */);
@@ -161,7 +163,6 @@ $GLOBALS['TL_DCA']['tl_tabellenname']['fields'] = array(/* ... */);
 // ja, es gibt noch mehr ...
 ~~~~
 
------
 
 ## `config`
 
@@ -194,7 +195,20 @@ $GLOBALS['TL_DCA']['tl_tabellenname']['fields'] = array(/* ... */);
 ),
 ~~~~
 
------
+
+## `list`
+
+~~~ {.php}
+// system/modules/core/dca/tl_member.php ; $GLOBALS['TL_DCA']['tl_member']
+'list' => array
+(
+  	'sorting' => array(/* ... */),
+  	'label' => array(/* ... */),
+  	'global_operations' => array(/* ... */),
+  	'operations' => array(/* ... */),
+),
+~~~~
+
 
 ## `palettes` und `subpalettes`
 
@@ -216,7 +230,6 @@ $GLOBALS['TL_DCA']['tl_tabellenname']['fields'] = array(/* ... */);
 ),
 ~~~~
 
------
 
 ## `fields`
 
@@ -235,9 +248,14 @@ $GLOBALS['TL_DCA']['tl_tabellenname']['fields'] = array(/* ... */);
 ),
 ~~~~
 
+
 # Konfiguration
 
----
+## 
+- Backendmodule
+- ContentElemente
+- FrontendModule
+- uvm.
 
 ## Backendmodule
 
@@ -255,7 +273,6 @@ $GLOBALS['BE_MOD']['system']['files'] = array
 // $GLOBALS['TL_LANG']['MOD']['tl_files'][1] = 'Dateien und Ordner verwalten ...';
 ~~~~
 
--------
 
 ## ContentElemente
 
@@ -268,7 +285,6 @@ $GLOBALS['TL_CTE']['texts']['text'] = 'ContentText';
 // wieder plus Eintrag in languages/*/tl_content.php (oder *.xlf)
 ~~~~
 
--------
 
 ## FrontendModule
 
@@ -279,14 +295,13 @@ $GLOBALS['FE_MOD'] = array(/* ... */);
 // Strukturell wie $GLOBALS['TL_CTE']
 ~~~~
 
--------
 
-## und vieles mehr
+## und ...
 
 - Formularfelder (`$GLOBALS['BE_FFL']` und `$GLOBALS['TL_FFL']`)
 - Seitentypen (`$GLOBALS['TL_PTY']`)
 - Wartungsarbeiten (`$GLOBALS['TL_MAINTENANCE']`, `$GLOBALS['TL_PURGE']`,
-`$GLOBALS['TL_CRON']`, ...)
+`$GLOBALS['TL_CRON']`)
 - Hooks (`$GLOBALS['TL_HOOKS']`; Onlinehandbuch!)
 - Besondere Darstellung für Wrapper (`$GLOBALS['TL_WRAPPERS']`)
 
