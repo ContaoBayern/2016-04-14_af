@@ -339,10 +339,11 @@ erzeugen (lassen)!
 // system/modules/myextension/config/autoload.{ini,php}
 ~~~~
 
+
 # Ausblick
 
 - [GitHub Profil](https://github.com/ContaoBayern/]  
-- Repository `contao_table_from_csv`. 
+- Repository `contao_table_from_csv`
 - Eine simple Implementierung eines ContentElements
 - Als Beispielcode oder Basis für eine "echte" Implementierung
 
