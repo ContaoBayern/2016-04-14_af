@@ -341,9 +341,10 @@ erzeugen (lassen)!
 
 # Ausblick
 
-In unserem [GitHub Profil](https://github.com/ContaoBayern/] gibt es 
-das Repository `contao_table_from_csv`, das eine simple Implementierung
-eines ContentElements enthält.
+- [GitHub Profil](https://github.com/ContaoBayern/]  
+- Repository `contao_table_from_csv`. 
+- Eine simple Implementierung eines ContentElements
+
 
 # Fragen
 
