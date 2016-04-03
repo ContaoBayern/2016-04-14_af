@@ -344,6 +344,7 @@ erzeugen (lassen)!
 - [GitHub Profil](https://github.com/ContaoBayern/]  
 - Repository `contao_table_from_csv`. 
 - Eine simple Implementierung eines ContentElements
+- Als Beispielcode oder Basis für eine "echte" Implementierung
 
 
 # Fragen
