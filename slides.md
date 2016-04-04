@@ -1,4 +1,4 @@
-% Erweiterungen<br>Eine geführte Wanderung duch die Strukturen von Contao
+% Erweiterungen<br>Eine geführte Wanderung durch die Strukturen von Contao
 % Andreas Fieger (@fiedschMuc)
 % 2016-04-14
 
