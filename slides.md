@@ -257,7 +257,7 @@ $GLOBALS['TL_DCA']['tl_tabellenname']['fields'] = array(/* ... */);
 - FrontendModule
 - uvm.
 
-## Backendmodule
+## Backendmodule (Tabellen)
 
 ~~~ {.php}
 // system/modules/myextension/config/config.php
@@ -273,6 +273,24 @@ $GLOBALS['BE_MOD']['system']['files'] = array
 // $GLOBALS['TL_LANG']['MOD']['tl_files'][1] = 'Dateien und Ordner verwalten ...';
 ~~~~
 
+## Backendmodule (Übersichtsseiten)
+
+~~~ {.php}
+// system/modules/myextension/config/config.php
+$GLOBALS['BE_MOD'] = array(/* ... */);
+
+// Bsp.:
+$GLOBALS['BE_MOD']['system']['maintenance'] = array
+  (
+    'callback'      => 'ModuleMaintenance',
+    'icon'          => 'path/to/icon.gif'   // themes beachten
+  );
+// plus Eintrag in languages/*/modules.php (oder *.xlf) wie oben
+
+// Implementierung dann in 
+// class ModuleMaintenance extends \BackendModule { /* ... */ }
+// plus Template in templates/backend/be_maintenance.html5
+~~~~
 
 ## ContentElemente
 
@@ -302,7 +320,7 @@ $GLOBALS['FE_MOD'] = array(/* ... */);
 - Seitentypen (`$GLOBALS['TL_PTY']`)
 - Wartungsarbeiten (`$GLOBALS['TL_MAINTENANCE']`, `$GLOBALS['TL_PURGE']`,
 `$GLOBALS['TL_CRON']`)
-- Hooks (`$GLOBALS['TL_HOOKS']`; Onlinehandbuch!)
+- Hooks (`$GLOBALS['TL_HOOKS']` s. Onlinehandbuch!)
 - Besondere Darstellung für Wrapper (`$GLOBALS['TL_WRAPPERS']`)
 
 
@@ -357,7 +375,7 @@ erzeugen (lassen)!
 
 - https://docs.contao.org/en/ (Developer Documentation)
 - http://contao.ninja/files/contao-konferenz/2014/Contao_Konferenz_2014_-_Erweiterungen_entwickeln_für_Contao_leicht_gemacht.pdf
-- https://github.com/fiedsch/contao_table_from_csv
+- http://de.contaowiki.org/Extensions_entwickeln_für_Contao_3
 
 
 # Danke
