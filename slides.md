@@ -368,7 +368,7 @@ erzeugen (lassen)!
 
 # Tipps / Fragen /Diskussion
 
-- Sofern nicht eine  dabei unterstützt: Code auf der Kommandozeile "ausführen" 
+- Sofern nicht eine IDE dabei unterstützt: Code auf der Kommandozeile "ausführen" 
   `php MyModule.php` => Syntaxfehler finden
 - ...
 
