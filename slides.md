@@ -366,7 +366,11 @@ erzeugen (lassen)!
 - Als Beispielcode oder Basis für eine "echte" Implementierung
 
 
-# Fragen
+# Tipps / Fragen /Diskussion
+
+- Sofern nicht eine  dabei unterstützt: Code auf der Kommandozeile "ausführen" 
+  `php MyModule.php` => Syntaxfehler finden
+- ...
 
 <!-- hier nachhalten, was diskutiert wurde -->
 
