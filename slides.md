@@ -332,12 +332,13 @@ ContentElement oder Modul implementieren
 
 ~~~ {.php}
 // system/modules/myextension/{elements,modules}/My{Element,Module}.php
+class MyModule {
+  protected $strTemplate = 'mein_template'; // Namenskonvention, Basisname
 
-protected $strTemplate = 'mein_template'; // Namenskonvention, Basisname
+  protected function generate() { /* ... */ }
 
-protected function generate() { /* ... */ }
-
-protected function compile() { /* ... */ }
+  protected function compile() { /* ... */ }
+}
 ~~~~
 
 # Templates
@@ -358,21 +359,25 @@ erzeugen (lassen)!
 ~~~~
 
 
+
+# Tipps / Fragen /Diskussion
+
+- "Internen Cache umgehen" während der Entwicklung einschalten
+
+- Sofern nicht eine IDE dabei unterstützt: Code auf der Kommandozeile "ausführen" 
+  `php MyModule.php` => Syntaxfehler finden
+
+- ...
+
+<!-- hier nachhalten, was diskutiert wurde -->
+
 # Ausblick
 
-- [GitHub Profil](https://github.com/ContaoBayern/]  
+- [GitHub Profil ContaoBayern](https://github.com/ContaoBayern/)  
 - Repository `contao_table_from_csv`
 - Eine simple Implementierung eines ContentElements
 - Als Beispielcode oder Basis für eine "echte" Implementierung
 
-
-# Tipps / Fragen /Diskussion
-
-- Sofern nicht eine IDE dabei unterstützt: Code auf der Kommandozeile "ausführen" 
-  `php MyModule.php` => Syntaxfehler finden
-- ...
-
-<!-- hier nachhalten, was diskutiert wurde -->
 
 
 # Links
